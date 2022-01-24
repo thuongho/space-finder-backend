@@ -13,8 +13,14 @@ import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
 
 export class SpaceStack extends Stack {
   private api = new RestApi(this, 'SpaceApi');
-  // name, primaryKey, stack
-  private spaceTable = new GenericTable('SpaceTable', 'spaceId', this);
+
+  // use GenericTable to create a SpaceTable
+  // req: tableName, primaryKey, stack
+  private spacesTable = new GenericTable(this, {
+    tableName: 'SpacesTable',
+    primaryKey: 'spaceId',
+    createLambdaPath: 'Create' // this lambda will have a create
+  });
 
   constructor(scope: Construct, id: string, props: StackProps) {
     super(scope, id, props);
