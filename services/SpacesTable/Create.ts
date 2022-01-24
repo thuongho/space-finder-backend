@@ -19,9 +19,9 @@ async function handler(
 
   // item is object to insert into DynamoDb
   // spaceId from SpaceTable in SpaceStack
-  const item = {
-    spaceId: v4()
-  };
+  const item =
+    typeof event.body === 'object' ? event.body : JSON.parse(event.body);
+  item.spaceId = v4();
 
   try {
     await dbClient
@@ -33,6 +33,8 @@ async function handler(
   } catch (error) {
     result.body = (error as any).message;
   }
+
+  result.body = JSON.stringify(`Created item with id: ${item.spaceId}`);
 
   return result;
 }
