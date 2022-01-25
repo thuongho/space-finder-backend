@@ -2,9 +2,17 @@
 import { APIGatewayProxyEvent } from 'aws-lambda';
 import { handler } from '../../services/SpacesTable/Read';
 
+// primaryKey
+// const event: APIGatewayProxyEvent = {
+//   queryStringParameters: {
+//     spaceId: '26297328-0445-4768-b693-575659b2577b'
+//   }
+// } as any;
+
+// secondaryKey
 const event: APIGatewayProxyEvent = {
   queryStringParameters: {
-    spaceId: '26297328-0445-4768-b693-575659b2577b'
+    location: 'SF'
   }
 } as any;
 

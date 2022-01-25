@@ -6,6 +6,9 @@ GET {{endpoint}}/hello
 GET {{endpoint}}/spaces?spaceId=26297328-0445-4768-b693-575659b2577b
 ###
 
+GET {{endpoint}}/spaces?location=SF
+###
+
 POST {{endpoint}}/spaces/
 Content-Type: application/json
 
